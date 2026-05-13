@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Srujan N — Senior Full Stack Developer</title>
+    <title>Srujan N — Full Stack Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap"
         rel="stylesheet" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         *,
         *::before,
@@ -805,6 +806,35 @@
             color: var(--border2)
         }
 
+        .form-status {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 2px;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(74, 222, 204, 0.1);
+            color: var(--accent2);
+            border: 1px solid var(--accent2);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(250, 109, 140, 0.1);
+            color: var(--accent3);
+            border: 1px solid var(--accent3);
+        }
+
+        .btn-primary.loading {
+            opacity: 0.7;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
         /* ── FOOTER ── */
         footer {
             padding: 2rem 3rem;
@@ -874,6 +904,7 @@
         }
 
         @media(max-width: 768px) {
+
             .cursor,
             .cursor-ring {
                 display: none;
@@ -1040,13 +1071,29 @@
             transition: 0.3s;
         }
 
-        .mobile-toggle span:nth-child(1) { top: 0; }
-        .mobile-toggle span:nth-child(2) { top: 9px; }
-        .mobile-toggle span:nth-child(3) { top: 18px; }
+        .mobile-toggle span:nth-child(1) {
+            top: 0;
+        }
 
-        .mobile-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
-        .mobile-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        .mobile-toggle span:nth-child(2) {
+            top: 9px;
+        }
+
+        .mobile-toggle span:nth-child(3) {
+            top: 18px;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
     </style>
 </head>
 
@@ -1077,7 +1124,7 @@
         <div class="hero-grid"></div>
         <div class="hero-glow"></div>
         <div class="hero-content">
-            <div class="hero-tag reveal">available for senior roles</div>
+            <div class="hero-tag reveal">available for roles</div>
             <h1 class="hero-name reveal reveal-delay-1">
                 <div>Srujan N</div>
             </h1>
@@ -1125,7 +1172,7 @@
                     currently finishing my MCA at Shree Devi Institute of Technology. During my internship at Codelab, I
                     designed and shipped production applications used across both web and mobile — owning the
                     architecture end-to-end.</p>
-                <p>I approach engineering problems the way a senior developer does: thinking about <strong>data shape
+                <p>I approach engineering problems the way a developer does: thinking about <strong>data shape
                         first</strong>, then API contracts, then UI. I've built multi-role auth systems, real-time
                     dashboards, and REST APIs with proper access-control layers — not tutorial clones.</p>
                 <p>I'm looking for a team where I can work on <strong>meaningful infrastructure</strong>, mentor junior
@@ -1252,7 +1299,7 @@
                 <ul class="exp-bullets">
                     <li>Built responsive frontend interfaces and deepened proficiency in component-based UI architecture
                     </li>
-                    <li>Collaborated with senior developers to implement pixel-accurate designs from mockups</li>
+                    <li>Collaborated with developers to implement pixel-accurate designs from mockups</li>
                 </ul>
             </div>
 
@@ -1384,7 +1431,7 @@
         <div class="contact-wrap">
             <div class="reveal">
                 <h2 class="contact-big">Let's build<br>something <span class="italic">real.</span></h2>
-                <p class="contact-sub">I'm actively looking for senior full-stack developer roles. If you're building
+                <p class="contact-sub">I'm actively looking for full-stack developer roles. If you're building
                     something ambitious, I'd like to hear about it.</p>
                 <div class="contact-links">
                     <a href="mailto:srujan.nagarajb@email.com" class="contact-link">
@@ -1402,23 +1449,28 @@
                 </div>
             </div>
             <div class="reveal reveal-delay-2">
-                <div class="contact-form">
+                <form class="contact-form" id="contact-form">
                     <div class="form-group">
-                        <label class="form-label">your name</label>
-                        <input class="form-input" type="text" placeholder="Jane Smith" />
+                        <label class="form-label" for="from_name">your name</label>
+                        <input class="form-input" type="text" id="from_name" name="from_name" placeholder="Jane Smith"
+                            required />
                     </div>
                     <div class="form-group">
-                        <label class="form-label">email</label>
-                        <input class="form-input" type="email" placeholder="jane@company.com" />
+                        <label class="form-label" for="reply_to">email</label>
+                        <input class="form-input" type="email" id="reply_to" name="reply_to"
+                            placeholder="jane@company.com" required />
                     </div>
                     <div class="form-group">
-                        <label class="form-label">message</label>
-                        <textarea class="form-input" rows="5"
-                            placeholder="Tell me about the role or project..."></textarea>
+                        <label class="form-label" for="message">message</label>
+                        <textarea class="form-input" rows="5" id="message" name="message"
+                            placeholder="Tell me about the role or project..." required></textarea>
                     </div>
-                    <button class="btn-primary" style="margin-top:.5rem;width:100%;text-align:center">send message
-                        →</button>
-                </div>
+                    <button type="submit" id="submit-btn" class="btn-primary"
+                        style="margin-top:.5rem;width:100%;text-align:center">
+                        send message →
+                    </button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
             </div>
         </div>
     </section>
@@ -1488,6 +1540,45 @@
         const hero = document.querySelector('.hero-content');
         window.addEventListener('scroll', () => {
             if (scrollY < window.innerHeight && !isTouchDevice) hero.style.transform = `translateY(${scrollY * .15}px)`;
+        });
+
+        // EMAILJS INTEGRATION
+        (function () {
+            // Replace with your EmailJS Public Key
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // UI State: Loading
+            submitBtn.classList.add('loading');
+            submitBtn.innerHTML = 'sending...';
+            formStatus.className = 'form-status';
+            formStatus.style.display = 'none';
+
+            // serviceID, templateID from your EmailJS dashboard
+            const serviceID = 'YOUR_SERVICE_ID';
+            const templateID = 'YOUR_TEMPLATE_ID';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.innerHTML = 'send message →';
+                    formStatus.innerHTML = 'Message sent successfully! I\'ll get back to you soon.';
+                    formStatus.classList.add('success');
+                    contactForm.reset();
+                }, (err) => {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.innerHTML = 'send message →';
+                    formStatus.innerHTML = 'Oops! Something went wrong. Please try again or email me directly.';
+                    formStatus.classList.add('error');
+                    console.error('EmailJS Error:', err);
+                });
         });
     </script>
 </body>
