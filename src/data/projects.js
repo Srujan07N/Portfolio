@@ -1,0 +1,50 @@
+// Projects data
+export const projects = [
+  {
+    id: 1,
+    title: 'PigmyCollection',
+    subtitle: 'Pigmy Savings Collection System',
+    description:
+      'A comprehensive multi-role savings collection management system with dedicated portals for Admins, Collectors, and Clients. Features secure JWT authentication, role-based access control, and real-time financial tracking.',
+    image: null,
+    color: 'from-emerald-500 to-teal-600',
+    features: [
+      'Multi-role Architecture',
+      'Admin Portal',
+      'Collector Portal',
+      'Client Portal',
+      'User Management',
+      'JWT Authentication',
+      'Role-Based Access Control',
+      'MongoDB Database Design',
+      'REST APIs',
+    ],
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'REST API'],
+    github: 'https://github.com/SrujanN',
+    demo: '#',
+    achievement: 'Production-grade multi-role financial management system',
+  },
+  {
+    id: 2,
+    title: 'PowerPlate',
+    subtitle: 'Personalized Meal & Diet Management System',
+    description:
+      'A full-featured diet and nutrition management platform connecting nutritionists, clients, and admins. Supports personalized meal planning, progress tracking, consultancy bookings, and payment management.',
+    image: null,
+    color: 'from-teal-500 to-emerald-600',
+    features: [
+      'Multi-role Diet Management Platform',
+      'Nutritionist Dashboard',
+      'Client Dashboard',
+      'Admin Dashboard',
+      'Meal Plan Generation',
+      'Progress Tracking',
+      'Consultancy Requests',
+      'Payment Management',
+    ],
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'REST API'],
+    github: 'https://github.com/SrujanN',
+    demo: '#',
+    achievement: 'End-to-end nutrition platform with real-time tracking',
+  },
+]
