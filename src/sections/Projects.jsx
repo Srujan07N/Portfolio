@@ -131,16 +131,7 @@ const ProjectCard = ({ project, index }) => {
             }}>
             <GithubIcon size={15} /> GitHub
           </a>
-          <a href={project.demo} target="_blank" rel="noopener noreferrer"
-            style={{
-              flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-              padding: '0.7rem',
-              background: 'linear-gradient(135deg,#059669,#0d9488)', color: '#fff',
-              fontSize: '0.82rem', fontWeight: 700, borderRadius: '0.75rem',
-              textDecoration: 'none', boxShadow: '0 3px 12px rgba(5,150,105,0.25)',
-            }}>
-            <ExternalLink size={15} /> Live Demo
-          </a>
+         
         </div>
       </div>
 
