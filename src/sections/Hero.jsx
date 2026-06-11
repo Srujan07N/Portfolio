@@ -120,7 +120,7 @@ const Hero = () => {
               style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}
             >
               <motion.a
-                href="#" download="Srujan_N_Resume.pdf"
+                href="/MyResume.pdf" download="Srujan_N_Resume.pdf"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                   padding: '0.85rem 1.75rem',
